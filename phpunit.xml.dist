@@ -8,7 +8,7 @@
 >
     <testsuites>
         <testsuite name="DaSigned Math Test Suite">
-            <directory>./src/DaSigned/XsdModel/*/Tests/</directory>
+            <directory>./Tests/DaSigned/XsdModel/Type/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

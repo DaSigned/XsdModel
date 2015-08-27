@@ -10,6 +10,8 @@
 
 namespace DaSigned\XsdModel\Type;
 
+use DaSigned\XsdModel\Type\Exception\InvalidArgumentException;
+
 /**
  * Representation of Integer Number
  *
@@ -28,5 +30,19 @@ class Integer
     public function get()
     {
         return $this->value;
+    }
+
+    /**
+     * @param int $value
+     */
+    public function set($value)
+    {
+        if (!is_int($value)) {
+            throw new InvalidArgumentException(__METHOD__.': $value must be int');
+        }
+
+        $this->value = $value;
+
+        return $this;
     }
 }

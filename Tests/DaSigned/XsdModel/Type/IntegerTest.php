@@ -32,19 +32,39 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown()
-    {
-
-    }
-
-    /**
      * @covers DaSigned\XsdModel\Type\Integer::get()
      */
     public function testGetAfterCreation()
     {
         $this->assertSame(0, $this->object->get());
+    }
+
+    public function testGetAfterSetFromString()
+    {
+        $this->assertSame(1, $this->object->set(1)->get());
+    }
+
+    public function testIfSetWithNonIntegerValueThrowsRightException()
+    {
+        try {
+            $this->object->set('foo');
+            $this->fail('Expected exception not thrown');
+        } catch (\Exception $exc) {
+            $namespace = 'DaSigned\\XsdModel\\Type\\Exception\\';
+            $exceptionInterface = $namespace.'ExceptionInterface';
+            $invalidArgumentException = $namespace.'InvalidArgumentException';
+
+            $this->assertInstanceOf(
+                $exceptionInterface,
+                $exc,
+                'Not an '.$exceptionInterface
+            );
+
+            $this->assertInstanceOf(
+                $invalidArgumentException,
+                $exc,
+                'Not an '.$invalidArgumentException
+            );
+        }
     }
 }

@@ -19,6 +19,9 @@ use DaSigned\XsdModel\Type\Exception\InvalidArgumentException;
  */
 class Integer
 {
+    /**
+     * @var string
+     */
     private $lexicalRepresentationPattern = '/^[+-]?[0-9]+$/';
 
     /**

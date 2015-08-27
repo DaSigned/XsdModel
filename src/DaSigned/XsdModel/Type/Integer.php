@@ -19,30 +19,46 @@ use DaSigned\XsdModel\Type\Exception\InvalidArgumentException;
  */
 class Integer
 {
-    /**
-     * @var int
-     */
-    private $value = 0;
+    private $lexicalRepresentationPattern = '/^[+-]?[0-9]+$/';
 
     /**
+     * @param mixed $value
+     *
      * @return int
      */
-    public function get()
+    public function sanitize($value)
     {
-        return $this->value;
+        if ($this->isValidType($value)) {
+            return $value;
+        }
+
+        if (!$this->isValidFormat($value)) {
+            throw new InvalidArgumentException(
+                __METHOD__
+                .': $value must match '.$this->lexicalRepresentationPattern
+            );
+        }
+
+        return (int) $value;
     }
 
     /**
-     * @param int $value
+     * @param mixed $value
+     *
+     * @return bool
      */
-    public function set($value)
+    private function isValidType($value)
     {
-        if (!is_int($value)) {
-            throw new InvalidArgumentException(__METHOD__.': $value must be int');
-        }
+        return is_int($value);
+    }
 
-        $this->value = $value;
-
-        return $this;
+    /**
+     * @param mixed $value
+     *
+     * @return bool
+     */
+    private function isValidFormat($value)
+    {
+        return preg_match($this->lexicalRepresentationPattern, $value);
     }
 }

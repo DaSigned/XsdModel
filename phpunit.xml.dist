@@ -11,4 +11,12 @@
             <directory>./Tests/DaSigned/XsdModel/Type/</directory>
         </testsuite>
     </testsuites>
+
+    <logging>
+        <log type="coverage-html" target="./coverage"/>
+    </logging>
+    
+    <whitelist processUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">./src</directory>
+    </whitelist>
 </phpunit>

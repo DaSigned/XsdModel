@@ -2,6 +2,7 @@
 XML Schema compatible Data Modelling
 
 PHP version required: >= 5.3
+
 PHP version tested:
 
     - 5.3

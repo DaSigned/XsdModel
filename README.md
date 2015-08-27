@@ -1,4 +1,4 @@
-# XsdModel (https://travis-ci.org/DaSigned/XsdModel.svg?branch=master)
+# XsdModel [![Build Status](https://travis-ci.org/DaSigned/XsdModel.svg?branch=master)](https://travis-ci.org/DaSigned/XsdModel)
 XML Schema compatible Data Modelling
 
 PHP version required: >= 5.3
